@@ -1,0 +1,11 @@
+<!--
+[INPUT]: 无外部资源。
+[OUTPUT]: 同心呼吸环标记。
+[POS]: 站点的静态身份符号；与原图头像同心。
+[PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#FAFAF8"/>
+  <circle cx="16" cy="16" r="10" stroke="#627B68" stroke-width="2"/>
+  <circle cx="16" cy="16" r="5" fill="#252722"/>
+</svg>
