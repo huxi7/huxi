@@ -1,6 +1,6 @@
 /**
  * [INPUT]: 依赖静态路径、双语文案与 IdentityAvatar。
- * [OUTPUT]: 导出 SiteShell、SiteHeader 与 SiteFooter。
+ * [OUTPUT]: 导出 SiteShell、SiteHeader 与仅开发时显示的 SiteFooter。
  * [POS]: 保持全部公开页面的窄栏、导航与身份一致。
  * [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
  */
@@ -22,12 +22,12 @@ export function SiteHeader({ locale, page = "home" }: { locale: Locale; page?: P
   </header>;
 }
 
-export function SiteFooter({ locale }: { locale: Locale }) {
+export function SiteFooter() {
+  if (process.env.NODE_ENV !== "development") return null;
   return <footer className="mt-6 flex flex-wrap items-center justify-between gap-4 pb-2 font-mono text-[10px] leading-5 text-copy">
-    <span>{copy[locale].footer}</span>
-    {process.env.NODE_ENV === "development" && <Link href="/design/" className="quiet-link" aria-label="Open development design system">
+    <Link href="/design/" className="quiet-link" aria-label="Open development design system">
       <SlidersHorizontal size={11} aria-hidden="true" /><span>Design</span><ArrowUpRight size={11} aria-hidden="true" />
-    </Link>}
+    </Link>
   </footer>;
 }
 
@@ -36,6 +36,6 @@ export function SiteShell({ children, locale, page = "home" }: { children: React
     <a href="#content" className="fixed top-3 left-3 z-50 -translate-y-24 rounded bg-ink px-3 py-2 text-paper focus:translate-y-0">{copy[locale].skip}</a>
     <SiteHeader locale={locale} page={page} />
     <main id="content" tabIndex={-1}>{children}</main>
-    <SiteFooter locale={locale} />
+    <SiteFooter />
   </div>;
 }

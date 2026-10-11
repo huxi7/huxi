@@ -198,10 +198,6 @@
   .preview-caption { font-size: 9px; text-align: center; }
   .folune-note .detail-trigger > svg:first-child { transition: transform var(--duration-reveal) var(--ease-quiet); }
   .folune-note[data-open="true"] .detail-trigger > svg:first-child { transform: rotate(-12deg); }
-  .tech-mention { display: inline-flex; align-items: center; gap: 4px; vertical-align: -1px; color: var(--color-ink); }
-  .tech-mention svg { transition: transform 650ms var(--ease-quiet), color var(--duration-detail); }
-  .tech-mention:hover svg { transform: rotate(-5deg); }
-  .tech-react:hover svg { transform: rotate(60deg); }
 
   /* ---- 链接：细线、图标与箭头共同给出轻量反馈 ------------------------ */
   .project-row, .reading-link { transition: background-color var(--duration-detail); }
@@ -240,12 +236,14 @@
   .reading-link:is(:hover, :focus-visible) .soon-note { transform: rotate(0); }
 
   /* ---- 社交入口：小图标，保留宽裕的点击范围 -------------------------- */
-  .social-detail .detail-trigger, .cv-link { height: 36px; min-width: 36px; justify-content: center; border-radius: 50%; color: var(--color-copy); transition: color var(--duration-detail), background-color var(--duration-detail); }
-  .social-detail[data-open="true"] .detail-trigger, .cv-link:is(:hover, :focus-visible) { color: var(--color-ink); background: var(--color-hover); }
+  .social-detail .detail-trigger { height: 36px; min-width: 36px; justify-content: center; border-radius: 50%; color: var(--color-copy); transition: color var(--duration-detail), background-color var(--duration-detail); }
+  .social-detail[data-open="true"] .detail-trigger { color: var(--color-ink); background: var(--color-hover); }
   .social-detail .detail-trigger svg { transition: transform var(--duration-reveal) var(--ease-quiet); }
   .social-detail[data-open="true"] .detail-trigger svg { transform: translateY(-1px) rotate(-5deg); }
   .social-detail .detail-popover { padding: 4px 8px; font-size: 9px; bottom: calc(100% + 5px); border-radius: 4px; }
-  .cv-link { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; border-radius: 6px; text-decoration: none; }
+  /* ---- 履历入口：独立文字链接，与社交图标分组 ------------------------ */
+  .cv-link { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 36px; min-width: 36px; padding: 0 10px; border-radius: 6px; color: var(--color-copy); font: 11px/20px var(--font-mono); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; transition: color var(--duration-detail), background-color var(--duration-detail), text-decoration-color var(--duration-detail); }
+  .cv-link:is(:hover, :focus-visible) { color: var(--color-ink); background: var(--color-hover); text-decoration-color: var(--color-muted); }
   .cv-caption { position: absolute; left: 50%; bottom: calc(100% + 5px); padding: 4px 8px; border: 1px solid var(--color-rule); border-radius: 4px; background: var(--color-paper); font: 9px/1.6 var(--font-mono); white-space: nowrap; visibility: hidden; opacity: 0; transform: translate(-50%, 3px); transition: opacity var(--duration-detail), transform var(--duration-detail), visibility var(--duration-detail); }
   .cv-link:is(:hover, :focus-visible) .cv-caption { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
 }
@@ -270,7 +268,7 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation: none !important; }
   .detail-popover, .detail-note[data-open="true"] .detail-popover { transform: translateX(-50%); }
-  .project-stack svg, .tech-mention:hover svg, .project-row:is(:hover, :focus-visible) .project-mark, .reading-link:is(:hover, :focus-visible) .reading-icon, .social-detail[data-open="true"] .detail-trigger svg, .folune-note[data-open="true"] .detail-trigger > svg:first-child, :is(.project-row, .reading-link):is(:hover, :focus-visible) .link-arrow, .folune-note[data-open="true"] .link-arrow { transform: none; }
+  .project-stack svg, .project-row:is(:hover, :focus-visible) .project-mark, .reading-link:is(:hover, :focus-visible) .reading-icon, .social-detail[data-open="true"] .detail-trigger svg, .folune-note[data-open="true"] .detail-trigger > svg:first-child, :is(.project-row, .reading-link):is(:hover, :focus-visible) .link-arrow, .folune-note[data-open="true"] .link-arrow { transform: none; }
   .soon-note { transform: none; }
   .identity-hint, .identity-avatar:is(:hover, :focus-visible) .identity-hint { transform: none; }
 }
