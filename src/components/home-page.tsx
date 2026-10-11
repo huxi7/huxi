@@ -1,7 +1,7 @@
 /**
  * [INPUT]: 依赖双语个人叙述、静态路由、项目行与局部批注。
  * [OUTPUT]: 导出 HomePage 双语首页。
- * [POS]: 服务端内容编排；底部区分社交入口与履历入口。
+ * [POS]: 服务端首页内容编排；双语版本共用排版类与交互组件。
  * [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
  */
 import Link from "next/link";
@@ -15,9 +15,9 @@ import { SiteShell } from "./site-shell";
 export function HomePage({ locale }: { locale: Locale }) {
   const text = copy[locale];
   return <SiteShell locale={locale}>
-    <section aria-labelledby="intro-title" className="arrive">
-      <h1 id="intro-title" aria-label={text.title} className="mb-3 text-[20px] leading-7 font-semibold tracking-[-0.035em]">{text.greeting}<DetailNote label={text.nameLabel} className="name-note" note={<><span className="name-pronunciation">hū xī</span><span className="note-divider" aria-hidden="true">/</span><span>{text.nameNote}</span></>}>huxi</DetailNote>{text.titleEnd}</h1>
-      <div className="space-y-2.5 text-[14px] leading-[1.65] text-copy">
+    <section aria-labelledby="intro-title" className="home-intro arrive">
+      <h1 id="intro-title" aria-label={text.title} className="page-title home-title">{text.greeting}<DetailNote label={text.nameLabel} className="name-note" note={<><span className="name-pronunciation">hū xī</span><span className="note-divider" aria-hidden="true">/</span><span>{text.nameNote}</span></>}>huxi</DetailNote>{text.titleEnd}</h1>
+      <div className="reading-copy space-y-paragraph">
         <p>{text.introductionStart}<DetailNote label={text.detailLabel} className="pencil-note" note={text.detailNote}>{text.introductionDetail}</DetailNote>{text.introductionEnd}</p>
         <p>{text.curiosity}</p>
         <p>{text.nowStart}<DetailNote href={identity.folune} label="Folune" className="folune-note" note={<>
@@ -35,30 +35,30 @@ export function HomePage({ locale }: { locale: Locale }) {
         </>}><ProjectIcon name="folune" className="size-3.5" /><span>Folune</span><ArrowUpRight className="link-arrow" size={11} aria-hidden="true" /></DetailNote>{text.nowEnd}</p>
         <p>{text.closing}</p>
       </div>
-      <p className="mt-3 mb-4 text-[12px] leading-5 text-copy"><span aria-hidden="true" className="mr-1.5">~</span>{text.aside}</p>
+      <p className="home-aside caption"><span aria-hidden="true" className="mr-1.5">~</span>{text.aside}</p>
     </section>
 
     <div className="arrive arrive-later">
-      <section aria-labelledby="projects-title" className="section-divider pt-4 pb-3">
-        <h2 id="projects-title" className="section-label mb-1.5">{text.projects}</h2>
+      <section aria-labelledby="projects-title" className="section-divider home-section">
+        <h2 id="projects-title" className="section-label home-projects-label">{text.projects}</h2>
         <div>{projects.map((project) => <ProjectLink key={project.name} project={project} locale={locale} />)}</div>
       </section>
 
-      <section aria-labelledby="writing-title" className="section-divider pt-4 pb-4">
-        <h2 id="writing-title" className="section-label mb-3">{text.writing}</h2>
-        <p className="max-w-[31rem] leading-[1.6] text-copy">{text.writingText}</p>
-        <Link href={destination(locale, "blog")} className="reading-link -mx-2.5 mt-2.5 flex items-center justify-between gap-4 rounded-lg px-2.5 py-2.5">
+      <section aria-labelledby="writing-title" className="section-divider home-section home-writing-section">
+        <h2 id="writing-title" className="section-label home-writing-label">{text.writing}</h2>
+        <p className="reading-copy home-writing-copy">{text.writingText}</p>
+        <Link href={destination(locale, "blog")} className="reading-link home-reading-link flex items-center justify-between gap-2 rounded-md">
           <span className="inline-flex items-center gap-2 text-ink"><BookOpen className="reading-icon" size={14} strokeWidth={1.5} aria-hidden="true" /><span className="pencil-underline">Blog</span><span className="soon-note">{text.soon}</span></span>
           <ArrowRight size={15} className="link-arrow text-copy" aria-hidden="true" strokeWidth={1.5} />
         </Link>
       </section>
 
-      <div className="section-divider flex items-center justify-between gap-6 pt-4">
-        <div className="-ml-2.5 flex flex-wrap items-center gap-x-2 gap-y-3">
+      <div className="section-divider home-socials flex items-center justify-between gap-6">
+        <div className="home-social-links">
           <DetailNote href={identity.github} label="GitHub · solink7" className="social-detail" note="GitHub ↗"><SocialIcon name="github" /></DetailNote>
           <DetailNote href={identity.x} label="X · @bblink777" className="social-detail" note="X ↗"><SocialIcon name="x" className="size-3.5" /></DetailNote>
         </div>
-        <Link href={destination(locale, "cv")} className="cv-link -mr-2.5" aria-label={`${text.cv} · ${text.soon}`}><span>{text.cv}</span><span className="cv-caption" aria-hidden="true">{text.soon}</span></Link>
+        <Link href={destination(locale, "cv")} className="cv-link" aria-label={`${text.cv} · ${text.soon}`}><span>{text.cv}</span><span className="cv-caption" aria-hidden="true">{text.soon}</span></Link>
       </div>
     </div>
   </SiteShell>;

@@ -1,6 +1,6 @@
 /**
  * [INPUT]: 依赖 Next.js 生成的 out/ 静态产物。
- * [OUTPUT]: 对六个页面及开发代码排除边界执行断言。
+ * [OUTPUT]: 验证六个页面，阻止设计路由、入口与样本进入生产产物。
  * [POS]: 生产构建的最后一关；不依赖开发服务器状态。
  * [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
  */
@@ -19,7 +19,7 @@ for (const [file, language] of routes) {
   assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${file}: wrong HTML language`);
   assert.match(html, /<h1[\s>]/, `${file}: missing prerendered heading`);
   assert.match(html, /huxi/, `${file}: missing identity`);
-  assert.doesNotMatch(html, /href="\/design\/?"/, `${file}: development navigation leaked`);
+  assert.doesNotMatch(html, /href="\/design(?:[/?][^"]*)?"/, `${file}: development navigation leaked`);
 }
 
 await assert.rejects(access(path.join(output, "design")), "Design route must not be exported");
@@ -28,7 +28,7 @@ async function verifyDirectory(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     const file = path.join(directory, entry.name);
     if (entry.isDirectory()) await verifyDirectory(file);
-    else if (/\.(html|js|json|txt)$/.test(entry.name)) {
+    else if (/\.(html|js|json|txt|css)$/.test(entry.name)) {
       const text = await readFile(file, "utf8");
       assert.ok(!text.includes("HUXI_DESIGN_WORKBENCH"), `Development workbench leaked: ${file}`);
     }
