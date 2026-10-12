@@ -1,7 +1,7 @@
 /**
  * [INPUT]: 依赖双语内容与 Next.js Metadata 类型。
  * [OUTPUT]: 导出页面元信息生成函数与浅色视口配置。
- * [POS]: 为静态 HTML 提供语言明确的标题与分享摘要。
+ * [POS]: 首页标题固定为 huxi；摘要随语言与页面变化。
  * [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
  */
 import type { Metadata, Viewport } from "next";
@@ -11,7 +11,7 @@ export const siteViewport: Viewport = { themeColor: "#fafaf8" };
 
 export function pageMetadata(locale: Locale, page: PageKind = "home"): Metadata {
   const text = copy[locale];
-  const title = page === "home" ? "huxi — building, learning, breathing." : `${page === "blog" ? "Blog" : "CV"} — huxi`;
+  const title = page === "home" ? "huxi" : `${page === "blog" ? "Blog" : "CV"} — huxi`;
   const description = page === "home" ? text.description : page === "blog" ? text.blog.body : text.resume.body;
   return {
     title, description,
