@@ -23,7 +23,7 @@ README.md - 运行方式、内容入口与素材依据
 ## 约定
 - 英文位于根路径；中文位于 /zh/。
 - 两种语言均使用展示名 huxi。
-- 页首使用 40px 真实头像；点击范围为 64px。
+- 页首使用 36px 真实头像；点击范围为 64px。
 - 两组根布局分别输出正确的 html lang。
 - 公开内容来自 src/data/site.ts。
 - Tailwind 主题来自 src/styles/globals.css。

@@ -70,7 +70,7 @@ export function DesignPage() {
 
     <SampleSection number="05" title="一次呼吸 / Motion">
       <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3"><div className="min-w-64"><IdentityAvatar label="预览一次呼吸" hint={copy.en.breathHint} /></div><span className="text-caption text-copy">{breathMotion.duration.toFixed(1)}s · one breath</span></div>
-      <p className="mt-5 max-w-[36rem] text-caption leading-6 text-copy">页首与独立样本均使用 40px 头像，点击范围为 64px。两个同心呼吸环围绕头像舒展，照片轻轻胀大后归位。一次交互只播放一轮，短句说明 huxi 的读音。减少动态效果时保留细边与短句，呼吸不播放。</p>
+      <p className="mt-5 max-w-[36rem] text-caption leading-6 text-copy">页首与独立样本均使用 36px 头像，点击范围为 64px。两个同心呼吸环围绕头像舒展，照片轻轻胀大后归位。一次交互只播放一轮，短句说明 huxi 的读音。减少动态效果时保留细边与短句，呼吸不播放。</p>
     </SampleSection>
 
     <footer className="border-t border-rule pt-6 text-caption leading-6 text-copy">颜色与排版：<code className="font-sans">src/styles/globals.css</code><br />文案与外链：<code className="font-sans">src/data/site.ts</code><br />呼吸节奏：<code className="font-sans">src/data/motion.ts</code></footer>

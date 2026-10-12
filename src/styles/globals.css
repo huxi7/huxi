@@ -53,7 +53,7 @@
   .page-title:lang(zh) { letter-spacing: 0; }
   .reading-copy { @apply text-reading font-normal text-prose; }
   .caption { @apply text-caption font-normal text-copy; }
-  /* ---- 原版节奏：恢复完整窄栏、40px 头像与分区距离 ----------------- */
+  /* ---- 页面节奏：窄栏、36px 头像与分区距离 ------------------------- */
   .site-shell { --content-inset: 6px; padding-block: 20px 24px; }
   .site-header { height: 56px; margin-bottom: 12px; padding-inline: var(--content-inset, 6px); }
   .site-language { @apply text-caption; }
@@ -110,7 +110,7 @@
     flex-shrink: 0;
     width: 64px;
     height: 64px;
-    margin-left: -12px;
+    margin-left: -14px;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -119,8 +119,8 @@
   .identity-photo {
     position: relative;
     display: block;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     overflow: hidden;
     border-radius: 50%;
     background: var(--color-hover);
