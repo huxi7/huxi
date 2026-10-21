@@ -11,7 +11,7 @@ export type Tech = "typescript" | "react" | "bun" | "python" | "fastapi" | "sqli
 export const identity = {
   name: "huxi",
   avatar: "/avatar.jpg",
-  github: "https://github.com/solink7",
+  github: "https://github.com/huxi7",
   x: "https://x.com/bblink777",
   folune: "https://folune.huxi7.com/",
 };
@@ -60,7 +60,7 @@ export const projects: Project[] = [
       en: "Savings become free days, lit up on a life grid.",
       zh: "把储蓄换算成自由天数，点亮人生方格。",
     },
-    href: "https://github.com/solink7/financial-freedom-lamp",
+    href: "https://github.com/huxi7/financial-freedom-lamp",
     address: "source on GitHub",
     technologies: ["python", "fastapi", "sqlite"],
   },
