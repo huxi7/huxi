@@ -17,7 +17,8 @@ next-env.d.ts - Next.js 生成的类型入口
 .gitignore - 排除依赖、构建产物与本地配置
 .nvmrc - 固定 Cloudflare Pages 构建的 Node 版本（22）
 AGENTS.md - 协作入口与 Next.js 自动维护的版本提示
-README.md - 运行方式、内容入口与素材依据
+README.md - 项目简介、开发构建命令与许可证入口
+LICENSE - AGPL-3.0 完整许可文本
 </config>
 
 ## 约定
