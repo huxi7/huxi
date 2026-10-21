@@ -55,7 +55,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
       <div className="section-divider home-socials flex items-center justify-between gap-6">
         <div className="home-social-links">
-          <DetailNote href={identity.github} label="GitHub · solink7" className="social-detail" note="GitHub ↗"><SocialIcon name="github" /></DetailNote>
+          <DetailNote href={identity.github} label="GitHub · huxi7" className="social-detail" note="GitHub ↗"><SocialIcon name="github" /></DetailNote>
           <DetailNote href={identity.x} label="X · @bblink777" className="social-detail" note="X ↗"><SocialIcon name="x" className="size-3.5" /></DetailNote>
         </div>
         <Link href={destination(locale, "cv")} className="cv-link" aria-label={`${text.cv} · ${text.soon}`}><span>{text.cv}</span><span className="cv-caption" aria-hidden="true">{text.soon}</span></Link>
